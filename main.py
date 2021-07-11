@@ -1,12 +1,8 @@
 import requests
 import json
 import random
-import sqlite3
-from sqlite3 import Error
 from user_agents import USER_AGENTS
 from store_urls import STORE_URLS
-from db import Db
-
 
 def scraper_power(session):
     r = session.get(STORE_URLS['Power'])
@@ -34,11 +30,9 @@ def test(session):
     return("testi")
 
 
-db = Db('products.db')
 session = requests.Session()
 session.headers.update({'User-Agent': random.choice(USER_AGENTS)})
 products = []
 
 products += scraper_power(session)
 print_products(products)
-db.add_to_products(products)
