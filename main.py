@@ -25,6 +25,13 @@ def print_products(products):
         product_text = 'Tuote: {0}\nHinta(outlet): {1}\nHinta(norm.): {2}\n{3}\n{4}\n'.format(p['product'], p['price'], p['normal_price'], p['outlet_store'], p['outlet_reason'])
         print(product_text)
 
+def json_to_file(products):
+    data = {}
+    data['products'] = []
+    [data['products'].append(p) for p in products]
+
+    with open('products.json', 'w') as outfile:
+        json.dump(data, outfile)
 
 def test(session):
     return("testi")
@@ -36,3 +43,4 @@ products = []
 
 products += scraper_power(session)
 print_products(products)
+json_to_file(products)
