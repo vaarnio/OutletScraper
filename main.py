@@ -41,3 +41,4 @@ products = []
 
 products += scraper_power(session)
 print_products(products)
+db.add_to_products(products)

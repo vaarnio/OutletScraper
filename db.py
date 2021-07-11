@@ -26,3 +26,8 @@ class Db:
         except Error as e:
             print(e)
         return
+
+    def add_to_products(products):
+        sql = ''' INSERT INTO Products
+        '''
+        return
