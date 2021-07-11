@@ -22,7 +22,8 @@ def scraper_power(session):
 
 def print_products(products):
     for p in products:
-        product_text = 'Tuote: {0}\nHinta(outlet): {1}\nHinta(norm.): {2}\n{3}\n{4}\n'.format(p['product'], p['price'], p['normal_price'], p['outlet_store'], p['outlet_reason'])
+        product_text = 'Tuote: {0}\nHinta(outlet): {1}\nHinta(norm.): {2}\n{3}\n{4}\n'.format(
+            p['product'], p['price'], p['normal_price'], p['outlet_store'], p['outlet_reason'])
         print(product_text)
 
 def json_to_file(products):
@@ -35,6 +36,12 @@ def json_to_file(products):
 
 def test(session):
     return("testi")
+
+def compare(json_response):
+    with open('products.json', 'r') as json_file:
+        data = json_file.load(json_file)
+        for p in data['products']:
+
 
 
 session = requests.Session()
