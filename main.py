@@ -39,5 +39,5 @@ session = requests.Session()
 session.headers.update({'User-Agent': random.choice(USER_AGENTS)})
 products = []
 
-#products += scraper_power(session)
+products += scraper_power(session)
 print_products(products)
