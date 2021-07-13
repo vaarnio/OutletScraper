@@ -1,6 +1,8 @@
 import requests
 import json
 import random
+import telegram
+import os
 from user_agents import USER_AGENTS
 from store_urls import STORE_URLS
 
@@ -29,20 +31,33 @@ def print_products(products):
         product_text = product_to_string(p)
         print(product_text)
 
+def read_data_file():
+    try:
+        with open('data.json', 'r') as json_file:
+            return json.load(json_file)
+    except Exception as e:
+        print(e)
+        return({})
+
+def add_array_to_data_file(pair_name, data_array):
+    data = read_data_file()
+    data[pair_name] = []
+    [data[pair_name].append(p) for p in data_array if p not in data[pair_name]]
+
+    with open('data.json', 'w') as outfile:
+        json.dump(data, outfile)
+
 def json_to_file(products):
     data = {}
     data['products'] = []
     [data['products'].append(p) for p in products]
 
-    with open('products.json', 'w') as outfile:
+    with open('data.json', 'w') as outfile:
         json.dump(data, outfile)
-
-def test(session):
-    return("testi")
 
 def compare_and_get_new(products):
     try:
-        with open('products.json', 'r') as json_file:
+        with open('data.json', 'r') as json_file:
             data = json.load(json_file)
     except Exception as e:
         print(e)
@@ -62,6 +77,23 @@ def compare_and_get_new(products):
 
     return(new_products)
 
+def send_telegram_message(message):
+    #set bot token in enrionmental variable 'outlet_bot_token' before using
+    token = os.environ.get('outlet_bot_token')
+    bot = telegram.Bot(token=token)
+
+    #get new subscribers and add them to data.json
+    updates = bot.get_updates()
+    chat_ids = [c.message.from_user.id for c in updates]
+    chat_ids = list(set(chat_ids)) #remove duplicates
+    print('New telegram bot chat ids: {0}'.format(chat_ids))
+    [add_array_to_data_file('chats', [chat_id]) for chat_id in chat_ids]
+
+    chat_ids = read_data_file()['chats']
+    print('Sending message to following chats: {0}'.format(chat_ids))
+    for c_id in chat_ids:
+        bot.send_message(text=message, chat_id=c_id)
+
 
 session = requests.Session()
 session.headers.update({'User-Agent': random.choice(USER_AGENTS)})
@@ -69,5 +101,7 @@ products = []
 
 products += scraper_power(session)
 print_products(products)
-print(compare_and_get_new(products))
-json_to_file(products)
+for p in compare_and_get_new(products):
+    send_telegram_message(product_to_string(p))
+add_array_to_data_file('products', products)
+
