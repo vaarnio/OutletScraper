@@ -87,7 +87,7 @@ def send_telegram_message(message):
     chat_ids = [c.message.from_user.id for c in updates]
     chat_ids = list(set(chat_ids)) #remove duplicates
     print('New telegram bot chat ids: {0}'.format(chat_ids))
-    [add_array_to_data_file('chats', [chat_id]) for chat_id in chat_ids]
+    add_array_to_data_file('chats', chat_ids)
 
     chat_ids = read_data_file()['chats']
     print('Sending message to following chats: {0}'.format(chat_ids))
