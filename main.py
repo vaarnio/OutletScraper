@@ -34,10 +34,21 @@ def print_products(products):
 def read_data_file():
     try:
         with open('data.json', 'r') as json_file:
-            return json.load(json_file)
+            data = json.load(json_file)
     except Exception as e:
         print(e)
-        return({})
+        data = {}
+        write_data_file(data)
+    finally:
+        return data 
+
+def write_data_file(data):
+    try:
+        with open('data.json', 'w') as outfile:
+            json.dump(data, outfile)
+    except Exception as e:
+        print(e)
+
 
 def add_array_to_data_file(pair_name, data_array):
     data = read_data_file()
@@ -47,26 +58,17 @@ def add_array_to_data_file(pair_name, data_array):
     with open('data.json', 'w') as outfile:
         json.dump(data, outfile)
 
-def json_to_file(products):
-    data = {}
-    data['products'] = []
-    [data['products'].append(p) for p in products]
-
-    with open('data.json', 'w') as outfile:
-        json.dump(data, outfile)
-
 def compare_and_get_new(products):
-    try:
-        with open('data.json', 'r') as json_file:
-            data = json.load(json_file)
-    except Exception as e:
-        print(e)
-        return([])
+    data = read_data_file()
 
-    old_products = data['products']
+    try:
+        old_products = data['products']
+    except:
+        old_products = []
+        add_array_to_data_file('products', old_products)
 
     old_product_ids = [p['outlet_id'] for p in old_products]
-    print(old_product_ids)
+    #print(old_product_ids)
     for old_product in old_products:
         old_product_ids.append(old_product['outlet_id'])
 
@@ -82,14 +84,23 @@ def send_telegram_message(message):
     token = os.environ.get('outlet_bot_token')
     bot = telegram.Bot(token=token)
 
-    #get new subscribers and add them to data.json
+    #get new subscribers from telegram api
     updates = bot.get_updates()
-    chat_ids = [c.message.from_user.id for c in updates]
-    chat_ids = list(set(chat_ids)) #remove duplicates
-    print('New telegram bot chat ids: {0}'.format(chat_ids))
-    add_array_to_data_file('chats', chat_ids)
+    new_chat_ids = [c.message.from_user.id for c in updates]
+    new_chat_ids = list(set(new_chat_ids)) #remove duplicates by converting to set and back to list
 
-    chat_ids = read_data_file()['chats']
+    #get old subscribers from file
+    data = read_data_file()
+    try:
+        chat_ids = data['chats']
+        new_chat_ids = [chat for chat in new_chat_ids if chat not in chat_ids]
+        print('New telegram bot chat ids: {0}'.format(new_chat_ids))
+        chat_ids += new_chat_ids
+    except:
+        chat_ids = new_chat_ids
+    finally:
+        add_array_to_data_file('chats', chat_ids)
+
     print('Sending message to following chats: {0}'.format(chat_ids))
     for c_id in chat_ids:
         bot.send_message(text=message, chat_id=c_id)
