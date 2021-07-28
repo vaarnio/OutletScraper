@@ -3,24 +3,8 @@ import json
 import random
 import telegram
 import os
+import scrapers
 from user_agents import USER_AGENTS
-from store_urls import STORE_URLS
-
-def scraper_power(session):
-    r = session.get(STORE_URLS['Power'])
-    json = r.json()
-
-    data = []
-    for p in json['Products']:
-        data.append({
-            'product': p['SearchTitle'],
-            'price': p['Price'],
-            'normal_price': p['OutletProductNormalPrice'],
-            'outlet_store': p['OutletStore'],
-            'outlet_reason': p['OutletReason'],
-            'outlet_id' : p['OutletId']
-        })
-    return data
 
 def product_to_string(p):
     return('Tuote: {0}\nHinta(outlet): {1}\nHinta(norm.): {2}\n{3}\n{4}\n'.format(
@@ -105,14 +89,14 @@ def send_telegram_message(message):
     for c_id in chat_ids:
         bot.send_message(text=message, chat_id=c_id)
 
-
+#scrape
 session = requests.Session()
 session.headers.update({'User-Agent': random.choice(USER_AGENTS)})
-products = []
+products = scrapers.scrape_power(session)
 
-products += scraper_power(session)
 print_products(products)
-for p in compare_and_get_new(products):
+""" for p in compare_and_get_new(products):
     send_telegram_message(product_to_string(p))
-add_array_to_data_file('products', products)
+
+add_array_to_data_file('products', products) """
 
