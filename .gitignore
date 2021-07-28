@@ -1,4 +1,4 @@
 *.pyc
 *.pyo
-data.json
-data1.json
+chat_ids.json
+products.json
