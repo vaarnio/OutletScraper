@@ -32,24 +32,29 @@ def send_telegram_message(message):
 
     #get new subscribers from telegram api
     updates = bot.get_updates()
+    print(updates)
     new_chat_ids = [c.message.from_user.id for c in updates]
     new_chat_ids = list(set(new_chat_ids)) #remove duplicates by converting to set and back to list
 
     #get old subscribers from file
     data = read_chat_ids()
     try:
-        chat_ids = data['chats']
+        chat_ids = data
         new_chat_ids = [chat for chat in new_chat_ids if chat not in chat_ids]
         print('New telegram bot chat ids: {0}'.format(new_chat_ids))
         chat_ids += new_chat_ids
     except:
         chat_ids = new_chat_ids
-    finally:
-        write_data_file(chat_ids)
+    write_data_file(chat_ids)
 
-    print('Sending message to following chats: {0}'.format(chat_ids))
+    print('Sending a message to following chats: {0}'.format(chat_ids))
     for c_id in chat_ids:
-        bot.send_message(text=message, chat_id=c_id)
+        try:
+            bot.send_message(text=message, chat_id=c_id)
+        except telegram.error.BadRequest:
+            print('Could not send message to: {0}'.format(c_id))
+            chat_ids.remove(c_id)
+    write_data_file(chat_ids)
 
 def notify(message):
     send_telegram_message(message)
