@@ -32,7 +32,6 @@ def send_telegram_message(message):
 
     #get new subscribers from telegram api
     updates = bot.get_updates()
-    print(updates)
     new_chat_ids = [c.message.from_user.id for c in updates]
     new_chat_ids = list(set(new_chat_ids)) #remove duplicates by converting to set and back to list
 
@@ -54,7 +53,7 @@ def send_telegram_message(message):
         except telegram.error.BadRequest:
             print('Could not send message to: {0}'.format(c_id))
             chat_ids.remove(c_id)
-    write_data_file(chat_ids)
+            write_data_file(chat_ids)
 
 def notify(message):
     send_telegram_message(message)
