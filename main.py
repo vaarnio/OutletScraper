@@ -2,10 +2,12 @@ import requests
 import json
 import random
 import os
+import sys
+
 import scrapers
 import notifications
 from user_agents import USER_AGENTS
-import sys
+
 
 def product_to_string(p):
     return('Tuote: {0}\nHinta(outlet): {1}\nHinta(norm.): {2}\n{3}\n{4}\n'.format(
