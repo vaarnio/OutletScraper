@@ -1,0 +1,265 @@
+[{
+    "Name": "Power Tammisto Vantaa",
+    "City": "Vantaa",
+    "RegionId": 28,
+    "RegionName": "Uusimaa",
+    "StoreId": 4725
+}, {
+    "Name": "Power Imatra",
+    "City": "Imatra",
+    "RegionId": 38,
+    "RegionName": "Etelä-Karjala",
+    "StoreId": 4747
+}, {
+    "Name": "Power Lappeenranta",
+    "City": "Lappeenranta",
+    "RegionId": 38,
+    "RegionName": "Etelä-Karjala",
+    "StoreId": 4745
+}, {
+    "Name": "Power Ideapark Seinäjoki",
+    "City": "Seinäjoki",
+    "RegionId": 40,
+    "RegionName": "Etelä-Pohjanmaa",
+    "StoreId": 4772
+}, {
+    "Name": "Power Kauhava",
+    "City": "Kauhava",
+    "RegionId": 40,
+    "RegionName": "Etelä-Pohjanmaa",
+    "StoreId": 4306
+}, {
+    "Name": "Power Mikkeli",
+    "City": "Mikkeli",
+    "RegionId": 34,
+    "RegionName": "Etelä-Savo",
+    "StoreId": 4743
+}, {
+    "Name": "Power Hämeenlinna",
+    "City": "Hämeenlinna",
+    "RegionId": 29,
+    "RegionName": "Kanta-Häme",
+    "StoreId": 4729
+}, {
+    "Name": "Power Riihimäki",
+    "City": "Riihimäki",
+    "RegionId": 29,
+    "RegionName": "Kanta-Häme",
+    "StoreId": 4728
+}, {
+    "Name": "Power Kokkola",
+    "City": "Kokkola",
+    "RegionId": 42,
+    "RegionName": "Keski-Pohjanmaa",
+    "StoreId": 4730
+}, {
+    "Name": "Power Äänekoski",
+    "City": "Äänekoski",
+    "RegionId": 32,
+    "RegionName": "Keski-Suomi",
+    "StoreId": 4320
+}, {
+    "Name": "Power Jyväskylä Seppä",
+    "City": "Jyväskylä",
+    "RegionId": 32,
+    "RegionName": "Keski-Suomi",
+    "StoreId": 4741
+}, {
+    "Name": "Power Palokka Jyväskylä",
+    "City": "Jyväskylä",
+    "RegionId": 32,
+    "RegionName": "Keski-Suomi",
+    "StoreId": 4742
+}, {
+    "Name": "Power Kotka",
+    "City": "Kotka",
+    "RegionId": 33,
+    "RegionName": "Kymenlaakso",
+    "StoreId": 4768
+}, {
+    "Name": "Power Kouvola",
+    "City": "Kouvola",
+    "RegionId": 33,
+    "RegionName": "Kymenlaakso",
+    "StoreId": 4738
+}, {
+    "Name": "Power Kemi",
+    "City": "Kemi",
+    "RegionId": 46,
+    "RegionName": "Lappi",
+    "StoreId": 4307
+}, {
+    "Name": "Power Rovaniemi",
+    "City": "Rovaniemi",
+    "RegionId": 46,
+    "RegionName": "Lappi",
+    "StoreId": 4750
+}, {
+    "Name": "Power Lahti",
+    "City": "Lahti",
+    "RegionId": 31,
+    "RegionName": "Päijät-Häme",
+    "StoreId": 4739
+}, {
+    "Name": "Power Ideapark Lempäälä",
+    "City": "Lempäälä",
+    "RegionId": 30,
+    "RegionName": "Pirkanmaa",
+    "StoreId": 4769
+}, {
+    "Name": "Power Sastamala",
+    "City": "Sastamala",
+    "RegionId": 30,
+    "RegionName": "Pirkanmaa",
+    "StoreId": 4322
+}, {
+    "Name": "Power Tampere Kaleva",
+    "City": "Tampere",
+    "RegionId": 30,
+    "RegionName": "Pirkanmaa",
+    "StoreId": 4716
+}, {
+    "Name": "Power Tampere Lielahti",
+    "City": "Tampere",
+    "RegionId": 30,
+    "RegionName": "Pirkanmaa",
+    "StoreId": 4714
+}, {
+    "Name": "Power Pietarsaari",
+    "City": "Pietarsaari",
+    "RegionId": 41,
+    "RegionName": "Pohjanmaa",
+    "StoreId": 4302
+}, {
+    "Name": "Power Vaasa",
+    "City": "Vaasa",
+    "RegionId": 41,
+    "RegionName": "Pohjanmaa",
+    "StoreId": 4732
+}, {
+    "Name": "Power Joensuu",
+    "City": "Joensuu",
+    "RegionId": 39,
+    "RegionName": "Pohjois-Karjala",
+    "StoreId": 4746
+}, {
+    "Name": "Power Kaakkuri",
+    "City": "Oulu",
+    "RegionId": 43,
+    "RegionName": "Pohjois-Pohjanmaa",
+    "StoreId": 4749
+}, {
+    "Name": "Power Oulu Limingantulli",
+    "City": "Oulu",
+    "RegionId": 43,
+    "RegionName": "Pohjois-Pohjanmaa",
+    "StoreId": 4748
+}, {
+    "Name": "Power Iisalmi",
+    "City": "Iisalmi",
+    "RegionId": 44,
+    "RegionName": "Pohjois-Savo",
+    "StoreId": 4301
+}, {
+    "Name": "Power Kuopio",
+    "City": "Kuopio",
+    "RegionId": 44,
+    "RegionName": "Pohjois-Savo",
+    "StoreId": 4744
+}, {
+    "Name": "Power Kankaanpää",
+    "City": "Kankaanpää",
+    "RegionId": 37,
+    "RegionName": "Satakunta",
+    "StoreId": 4734
+}, {
+    "Name": "Power Pori",
+    "City": "Pori",
+    "RegionId": 37,
+    "RegionName": "Satakunta",
+    "StoreId": 4733
+}, {
+    "Name": "Power Rauma",
+    "City": "Rauma",
+    "RegionId": 37,
+    "RegionName": "Satakunta",
+    "StoreId": 4737
+}, {
+    "Name": "Power Helsinki Stockmann",
+    "City": "Helsinki",
+    "RegionId": 28,
+    "RegionName": "Uusimaa",
+    "StoreId": 4718
+}, {
+    "Name": "Power Hyvinkää",
+    "City": "Hyvinkää",
+    "RegionId": 28,
+    "RegionName": "Uusimaa",
+    "StoreId": 4773
+}, {
+    "Name": "Power Itis Helsinki",
+    "City": "Helsinki",
+    "RegionId": 28,
+    "RegionName": "Uusimaa",
+    "StoreId": 4722
+}, {
+    "Name": "Power Järvenpää",
+    "City": "Järvenpää",
+    "RegionId": 28,
+    "RegionName": "Uusimaa",
+    "StoreId": 4770
+}, {
+    "Name": "Power Laajalahti",
+    "City": "Espoo",
+    "RegionId": 28,
+    "RegionName": "Uusimaa",
+    "StoreId": 4771
+}, {
+    "Name": "Power Lohja",
+    "City": "Lohja",
+    "RegionId": 28,
+    "RegionName": "Uusimaa",
+    "StoreId": 4727
+}, {
+    "Name": "Power Porvoo",
+    "City": "Porvoo",
+    "RegionId": 28,
+    "RegionName": "Uusimaa",
+    "StoreId": 4724
+}, {
+    "Name": "Power Sello Espoo",
+    "City": "Espoo",
+    "RegionId": 28,
+    "RegionName": "Uusimaa",
+    "StoreId": 4720
+}, {
+    "Name": "Power Suomenoja Espoo",
+    "City": "Espoo",
+    "RegionId": 28,
+    "RegionName": "Uusimaa",
+    "StoreId": 4721
+}, {
+    "Name": "Power Raisio Turku",
+    "City": "Raisio",
+    "RegionId": 35,
+    "RegionName": "Varsinais-Suomi",
+    "StoreId": 4736
+}, {
+    "Name": "Power Skanssi Turku",
+    "City": "Turku",
+    "RegionId": 35,
+    "RegionName": "Varsinais-Suomi",
+    "StoreId": 4756
+}, {
+    "Name": "Power Turku Stockmann",
+    "City": "Turku",
+    "RegionId": 35,
+    "RegionName": "Varsinais-Suomi",
+    "StoreId": 4735
+}, {
+    "Name": "Power Uusikaupunki",
+    "City": "Uusikaupunki",
+    "RegionId": 35,
+    "RegionName": "Varsinais-Suomi",
+    "StoreId": 4310
+}]

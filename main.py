@@ -52,7 +52,7 @@ def filter_old_products(products):
 print('starting scraping')
 session = requests.Session()
 session.headers.update({'User-Agent': random.choice(USER_AGENTS)})
-products = scrapers.scrape_power(session)
+products = scrapers.scrape_power(session, ['Apple', 'Huawei'], ['3341'])
 print('scraping complete')
 
 #create array containin only NEW products, THEN write ALL products to file
