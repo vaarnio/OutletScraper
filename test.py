@@ -13,7 +13,7 @@ def create_session():
 print('starting test')
 
 session = create_session()
-products = scrapers.scrape_power(session, ['Honor', 'Huawei'], ['3341'])
+products = scrapers.scrape_power(session, [], ['3341'])
 #products = scrapers.scrape_filters(session)
 #products = scrapers.constructUrl(['Apple', 'Huawei'], ['3341'])
 

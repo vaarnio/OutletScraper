@@ -40,23 +40,27 @@ def write_data_file(data):
     except Exception as e:
         print(e)
 
-def filter_old_products(products):
+def product_old_filter(product):
     old_products = read_data_file()
-
     old_product_ids = [p['outlet_id'] for p in old_products]
-    new_products = [p for p in products if p['outlet_id'] not in old_product_ids]
+    if(product['outlet_id'] in old_product_ids):
+        return False
+    else:
+        return True
 
+def filter_products(products):
+    new_products = filter(product_old_filter, products)
     return(new_products)
 
 #scrape
 print('starting scraping')
 session = requests.Session()
 session.headers.update({'User-Agent': random.choice(USER_AGENTS)})
-products = scrapers.scrape_power(session, ['Apple', 'Huawei'], ['3341'])
+products = scrapers.scrape_power(session, ['Apple'], ['3341'])
 print('scraping complete')
 
 #create array containin only NEW products, THEN write ALL products to file
-new_products = filter_old_products(products)
+new_products = filter_products(products)
 write_data_file(products)
 
 print('new products: \n')

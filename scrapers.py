@@ -9,10 +9,8 @@ A scraper should always return a dictionary with following key:value pairs:
 """
 
 POWER_URLS = {
-    "Apple" : "http://www.power.fi/umbraco/api/product/getproductsbysearchrequest?f-1-BasicBrand=Apple&f-1-BasicCategories=3341&from=0&o=true&q=outlet&s=5&size=36",
     "Base" : "http://www.power.fi",
     "Search_request_all" : "https://www.power.fi/umbraco/api/product/getproductsbysearchrequest?from=0&o=true&q=outlet&s=5&size=36",
-    "Search_request" : "http://www.power.fi/umbraco/api/product/getproductsbysearchrequest?f-1-BasicBrand={0}&f-1-BasicCategories={1}&from=0&o=true&q=outlet&s=5&size=36",
     "Search_request_base" : "http://www.power.fi/umbraco/api/product/getproductsbysearchrequest?{0}from=0&o=true&q=outlet&s=5&size=36"
 }
 
@@ -38,8 +36,6 @@ def scrape_power(session, brand, category):
     url = construct_url(brand, category)
     r = session.get(url)
     json = r.json()
-
-    print(json)
 
     products = []
     for p in json['Products']:
