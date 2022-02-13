@@ -17,7 +17,7 @@ POWER_URLS = {
 }
 
 
-def constructUrl(brands, categories):
+def construct_url(brands, categories):
     #form:
     #https://www.power.fi/umbraco/api/product/getproductsbysearchrequest?f-1-BasicBrand=HP&f-1-BasicBrand=Honor&f-1-BasicBrand=Huawei&from=0&o=true&q=outlet&s=5&size=36
     brand_filters = ""
@@ -35,7 +35,8 @@ def constructUrl(brands, categories):
 
 
 def scrape_power(session, brand, category):
-    r = session.get(POWER_URLS['Search_request'].format(brand, category))
+    url = construct_url(brand, category)
+    r = session.get(url)
     json = r.json()
 
     print(json)
