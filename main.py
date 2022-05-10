@@ -1,6 +1,5 @@
-from itertools import product
-import requests
 import random
+import requests
 
 import scrapers
 import notifications
@@ -15,15 +14,15 @@ def setup_session():
 def main():
     session = setup_session()
     products = scrapers.scrape_power(session, ['Apple'], ['3341'])
-    
+
     #create array containing only NEW products, THEN write ALL products to file
     new_products = p_hp.filter_old_products(products)
     p_hp.write_products_file(products)
 
     print('new products: \n')
     p_hp.print_products(new_products)
-    for p in new_products:
-        notifications.notify(p_hp.product_to_string(p))
+    for product in new_products:
+        notifications.notify(p_hp.product_to_string(product))
 
 if __name__ == "__main__":
     main()

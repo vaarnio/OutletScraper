@@ -16,7 +16,7 @@ VERKKOKAUPPA_URLS = {
 
 
 def construct_verkkokauppa_url(brands, categories):
-    # 
+    # note: parameters are lists
 
     brand_filters = ""
     for brand in brands:

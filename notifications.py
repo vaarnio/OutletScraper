@@ -13,7 +13,7 @@ def read_chat_ids(pathname):
     try:
         with open(pathname, 'r') as json_file:
             data = json.load(json_file)
-            return data 
+            return data
     except FileNotFoundError:
         try:
             #create file if it doesn't exist
