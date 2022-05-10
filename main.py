@@ -40,16 +40,21 @@ def write_data_file(data):
     except Exception as e:
         print(e)
 
-def product_old_filter(product):
-    old_products = read_data_file()
-    old_product_ids = [p['outlet_id'] for p in old_products]
+def product_old_filter(product, old_product_ids):
     if(product['outlet_id'] in old_product_ids):
         return False
     else:
         return True
 
 def filter_products(products):
-    new_products = filter(product_old_filter, products)
+    old_products = read_data_file()
+    old_product_ids = [p['outlet_id'] for p in old_products]
+
+    # filter function passed as lambda to allow second filter function argument
+    # this way reading data_file each iteration can be avoided
+    filtfunct = lambda product: product_old_filter(product, old_product_ids)
+    new_products = list(filter(filtfunct, products))
+    
     return(new_products)
 
 #scrape
