@@ -8,6 +8,7 @@ import scrapers
 import notifications
 from user_agents import USER_AGENTS
 
+PRODUCTS_JSON = 'products.json'
 
 def product_to_string(p):
     return('Tuote: {0}\nHinta(outlet): {1}\nHinta(norm.): {2}\n{3}\n{4}\n'.format(
@@ -20,13 +21,13 @@ def print_products(products):
 
 def read_data_file():
     try:
-        with open('products.json', 'r') as json_file:
+        with open(PRODUCTS_JSON, 'r') as json_file:
             data = json.load(json_file)
             return data
     except FileNotFoundError:
         try:
             #create file if it doesn't exist
-            with open('products.json', 'x') as new_file:
+            with open(PRODUCTS_JSON, 'x') as new_file:
                 json.dump([], new_file)
                 return []
         except Exception as e:
@@ -35,7 +36,7 @@ def read_data_file():
 
 def write_data_file(data):
     try:
-        with open('products.json', 'w') as outfile:
+        with open(PRODUCTS_JSON, 'w') as outfile:
             json.dump(data, outfile)
     except Exception as e:
         print(e)
