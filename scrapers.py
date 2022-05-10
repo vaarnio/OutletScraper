@@ -16,7 +16,7 @@ POWER_URLS = {
 
 
 def construct_url(brands, categories):
-    # available brands and categories are listed in JSON/brandFilters.json and JSON/categoryFilters.json
+    # available brands and categories are listed in filters/brandFilters.json and filters/categoryFilters.json
 
     brand_filters = ""
     for brand in brands:
@@ -37,7 +37,7 @@ def construct_url(brands, categories):
 
 def scrape_power(session, brand, category):
     url = construct_url(brand, category)
-    
+
     r = session.get(url)
     json = r.json()
 

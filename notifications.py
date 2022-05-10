@@ -7,7 +7,7 @@ import json
 #set bot token in enrionmental variable 'outlet_bot_token' before using
 TOKEN = os.environ.get('outlet_bot_token')
 BOT = telegram.Bot(token=TOKEN)
-CHAT_IDS_PATHNAME = 'chat_ids.json'
+CHAT_IDS_PATHNAME = 'data/chat_ids.json'
 
 def read_chat_ids(pathname):
     try:
