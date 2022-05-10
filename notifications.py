@@ -57,3 +57,7 @@ def send_telegram_message(message):
 
 def notify(message):
     send_telegram_message(message)
+
+if __name__ == "__main__":
+    import sys
+    notify(sys.argv[1])
