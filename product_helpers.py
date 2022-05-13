@@ -62,6 +62,6 @@ def read_products_file():
 def write_products_file(data):
     try:
         with open(PRODUCTS_JSON, 'w') as outfile:
-            json.dump(data, outfile)
+            json.dump(data, outfile, indent=4)
     except Exception as e:
         print(e)
