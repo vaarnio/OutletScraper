@@ -31,14 +31,16 @@ def construct_url(brands, categories, store_urls):
     # available brands and categories are listed in filters/brandFilters.json and filters/categoryFilters.json
 
     brand_filters = ""
-    for brand in brands:
-        brand = store_urls['Brand_base'].format(brand)
-        brand_filters += brand
+    if brands:
+        for brand in brands:
+            brand = store_urls['Brand_base'].format(brand)
+            brand_filters += brand
 
     category_filters = ""
-    for category in categories:
-        category = store_urls['Category_base'].format(category)
-        category_filters += category
+    if categories:
+        for category in categories:
+            category = store_urls['Category_base'].format(category)
+            category_filters += category
 
     url = store_urls["Search_request_base"].format(brand_filters + category_filters)
 
@@ -53,15 +55,19 @@ def scrape_power(session, outlet_query_url):
 
     products = []
     for p in json['Products']:
-        products.append({
-            'product': p['SearchTitle'],
-            'price': p['Price'],
-            'normal_price': p['OutletProductNormalPrice'],
-            'outlet_store': p['OutletStore'],
-            'outlet_reason': p['OutletReason'],
-            'outlet_id' : p['OutletId'],
-            'product_url' : POWER_URLS["Base"] + p['Url']
-        })
+        try:
+            products.append({
+                'product': p['SearchTitle'],
+                'price': p['Price'],
+                'normal_price': p['OutletProductNormalPrice'],
+                'outlet_store': p['OutletStore'],
+                'outlet_reason': p['OutletReason'],
+                'outlet_id' : p['OutletId'],
+                'product_url' : POWER_URLS["Base"] + p['Url']
+            })
+        except KeyError as e:
+            print(e)
+            print(p)
     return products
 
 
@@ -70,16 +76,20 @@ def scrape_verkkokauppa(session, outlet_query_url):
     json = r.json()
     products = []
     for p in json['products']:
-        customer_returns_info = p['customerReturnsInfo']
-        products.append({
-            'product': customer_returns_info['product_name'],
-            'price': customer_returns_info['price_with_tax'],
-            'normal_price': p['price']['current'],
-            'outlet_store': "Verkkokauppa.com",
-            'outlet_reason': customer_returns_info['product_extra_info'],
-            'outlet_id' : customer_returns_info['id'],
-            'product_url' : VERKKOKAUPPA_URLS['Base'] + '/fi/outlet/yksittaiskappaleet/{0}'.format(customer_returns_info['id'])
-        })
+        try:
+            customer_returns_info = p['customerReturnsInfo']
+            products.append({
+                'product': customer_returns_info['product_name'],
+                'price': customer_returns_info['price_with_tax'],
+                'normal_price': p['price']['current'],
+                'outlet_store': "Verkkokauppa.com",
+                'outlet_reason': customer_returns_info['product_extra_info'],
+                'outlet_id' : customer_returns_info['id'],
+                'product_url' : VERKKOKAUPPA_URLS['Base'] + '/fi/outlet/yksittaiskappaleet/{0}'.format(customer_returns_info['id'])
+            })
+        except KeyError as e:
+            print('KeyError: product has no key {0}, product json below:\n'.format(e))
+            print(p)
 
     return products
 
